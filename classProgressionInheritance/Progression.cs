@@ -9,9 +9,9 @@ namespace classProgressionInheritance
 {
     abstract public class Progression
     {
-        public double m1; // first member of progression
-        public double increment;// d or q in progression
-        public int n;//quantity of elements in progression
+        protected double m1; // first member of progression
+        protected double increment;// d or q in progression
+        protected int n;//quantity of elements in progression
 
 
         //property 
