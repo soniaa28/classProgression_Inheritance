@@ -14,48 +14,25 @@ namespace classProgressionInheritance
         protected int n;//quantity of elements in progression
 
 
-        //property 
-        public double FirstMember
-        {
-            get
-            {
-                return m1;
-            }
-            set
-            {
-                m1 = value;
-            }
-        }
-        //property 
-        public double Inc
-        {
-            get
-            {
-                return increment;
-            }
-            set
-            {
-                increment = value;
-            }
-        }
-        //property 
+        public abstract double Inc { get; set; }
+        public abstract string Name { get; }
+        
         public int N
         {
-            get
-            {
-                return  n;
+            get 
+            { 
+                return n;
             }
-            set
+            set 
             {
                 n = value;
             }
         }
-
-
         public Progression(double _m1, double _increment, int _n)
         {
             this.m1 = _m1;
-            this.increment = _increment;
+            if (_increment == 0) { increment = 1; }
+            else { increment = _increment; }
             this.n = _n;
         }
 
@@ -71,8 +48,9 @@ namespace classProgressionInheritance
         {
             return left.getSumOfAll() > right.getSumOfAll();
         }
-      
-        
+       
+
+
 
     }
 }
