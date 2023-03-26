@@ -1,4 +1,6 @@
-﻿namespace classProgressionInheritance
+﻿using System.Numerics;
+
+namespace classProgressionInheritance
 {
     public class Program
     {
@@ -32,6 +34,17 @@
                 Console.WriteLine(string.Format("Прогресія №{0} : {1} ", i + 1, p[i].ToString()));
             }
         }
+        static string getTypeP(Progression p)
+        {
+            if(p is ArithmeticProgression)
+            {
+                return "Арифметична";
+            }
+            else
+            {
+                return "Геометрична";
+            }
+        }
 
         static void FindMaxProgression(List<Progression> p)
         {
@@ -46,7 +59,7 @@
                 }
             }
            
-            Console.WriteLine(String.Format("{0}прогресія №{1} має найбільшу суму елементів - {2},а саме = {3}", p[index].Name, index + 1, p[index], p[index].getSumOfAll()));
+            Console.WriteLine(String.Format("{0} прогресія №{1} має найбільшу суму елементів - {2}а саме = {3}", getTypeP(p[index]), index + 1, p[index], p[index].getSumOfAll()));
         }
         static void SetNCollection(List<Progression> p, int _n)
         {
@@ -61,7 +74,7 @@
             List<double> newL = new List<double>();
             for(int i = 0; i < p.Count; i++)
             {
-                if (p[i].Name=="Арифметична")
+                if (p[i] is ArithmeticProgression)
                 {
                     continue;
                 }
@@ -113,8 +126,11 @@
                     Console.WriteLine("3.Знайти найбільшу прогресію(за сумою чисел)");
                     Console.WriteLine("4.Задати кількість членів усім прогресіям з колекції");
                     Console.WriteLine("5.Створити колекцію зі знаменників геометричної прогресії");
-                    Console.WriteLine("6.Порівняти дві прогресії з колекції");
-                    Console.WriteLine("7.Вийти");
+                    Console.WriteLine("6.Порівняти дві прогресії з колекції за сумою всіх їхніх членів");
+                    Console.WriteLine("7.Посортувати та надрукувати прогресії  за кількістю  їхніх членів");
+                    Console.WriteLine("8.Посортувати та надрукувати прогресії за величиною їхнього інкременту");
+                    Console.WriteLine("9.Надрукувати у форматі");
+                    Console.WriteLine("10.Вийти");
 
                     string menu = Console.ReadLine();
 
@@ -142,8 +158,32 @@
                             string[] choices = Console.ReadLine().Split(" ");
                             Console.WriteLine(String.Format("Прогресія з індексом {0} більша за прогресію {1} : {2}", choices[0], choices[1], collection[int.Parse(choices[0])-1] > collection[int.Parse(choices[1])-1] ));
                             break;
+                       
                      
                         case "7":
+                            ProgressionComparingbyN sortN = new ProgressionComparingbyN();
+                            collection.Sort(sortN);
+                            for (int i = 0; i < collection.Count; i++)
+                            {
+                                Console.WriteLine("BYM1 format : {0,30:BYM1} ", collection[i]);
+                            }
+                            break;
+
+                        case "8":
+                            ProgressionComparingbyIncrement sortInc = new ProgressionComparingbyIncrement();
+                            collection.Sort(sortInc);
+                            for (int i = 0; i < collection.Count; i++)
+                            {
+                                Console.WriteLine("BYM1 format : {0,30:BYM1} ", collection[i]);
+                            }
+                            break;
+
+                        case "9":
+                            Console.WriteLine("Введіть індекс прогресії, яку бажаєте надрукувати у форматі");
+                            int index = int.Parse(Console.ReadLine());
+                            Console.WriteLine("ROW format : {0,30:ROW}", collection[index - 1]);
+                            break;
+                        case "10":
                         default:
                             _continue = false;
                             break;
