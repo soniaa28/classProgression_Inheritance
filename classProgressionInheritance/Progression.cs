@@ -11,10 +11,9 @@ namespace classProgressionInheritance
 {
     abstract public class Progression : IFormattable
     {
-        protected double m1; // first member of progression
-        protected double increment;// d or q in progression
-        protected int n;//quantity of elements in progression
-
+        protected double m1; // перший член прогресії
+        protected double increment;// d або q 
+        protected int n;//кількість елементів в прогресії
 
         public abstract double Inc { get; set; }
     
@@ -37,9 +36,9 @@ namespace classProgressionInheritance
             this.n = _n;
         }
 
-        public abstract double getN(int _n);
-        public abstract double getSumOfN(int _n);
-        public abstract double getSumOfAll();
+        public abstract double getN(int _n); //знаходження n-тового члена прогресії
+        public abstract double getSumOfN(int _n);//знаходження суми усіх n-членів 
+        public abstract double getSumOfAll();//знаходження суми всіх елементів прогресії
         public override string ToString()
 
         {
@@ -50,7 +49,7 @@ namespace classProgressionInheritance
             }
             return progression;
         }
-        public string ToString(string? format, IFormatProvider? formatProvider) //реалізування інтерфейсу IFormattable
+        public string ToString(string? format, IFormatProvider? formatProvider) //реалізація інтерфейсу IFormattable
         {
             if (format == null)
                 return ToString();

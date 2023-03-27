@@ -99,12 +99,12 @@ namespace classProgressionInheritance
             ArithmeticProgression a2 = new ArithmeticProgression(0, 3, 7);
             ArithmeticProgression a3 = new ArithmeticProgression(1, 5, 3);
 
-            //Console.WriteLine(String.Format("отримана прогресія : {0}", a1 + a2));
+            //Console.WriteLine(String.Format("отримана прогресія : {0}", a1 + a2)); //testing operator +
 
             GeomProgression g1 = new GeomProgression(1, 3, 5);
             GeomProgression g2 = new GeomProgression(1, 2, 10);
             GeomProgression g3 = new GeomProgression(1, 4, 7);
-            //Console.WriteLine(String.Format("отримана прогресія : {0}", g1 + g2));
+            //Console.WriteLine(String.Format("отримана прогресія : {0}", g1 + g2)); //testing operator +
 
 
             List<Progression> collection = new List<Progression>() { a1, a2, a3, g1, g2, g3 };
@@ -112,8 +112,6 @@ namespace classProgressionInheritance
             {
                 Console.WriteLine(string.Format("Прогресія № {0} : {1} ", i + 1, collection[i].ToString()));
             }
-
-
 
             void Menu()
             {
@@ -123,14 +121,14 @@ namespace classProgressionInheritance
                     Console.WriteLine("\nОберіть один з варіантів,натиснувши відповідну цифру на клавіатурі :");
                     Console.WriteLine("1.Додати нову прогресію.");
                     Console.WriteLine("2.Надрукувати всі прогресії.");
-                    Console.WriteLine("3.Знайти найбільшу прогресію(за сумою чисел)");
-                    Console.WriteLine("4.Задати кількість членів усім прогресіям з колекції");
-                    Console.WriteLine("5.Створити колекцію зі знаменників геометричної прогресії");
-                    Console.WriteLine("6.Порівняти дві прогресії з колекції за сумою всіх їхніх членів");
-                    Console.WriteLine("7.Посортувати та надрукувати прогресії  за кількістю  їхніх членів");
-                    Console.WriteLine("8.Посортувати та надрукувати прогресії за величиною їхнього інкременту");
-                    Console.WriteLine("9.Надрукувати у форматі");
-                    Console.WriteLine("10.Вийти");
+                    Console.WriteLine("3.Знайти найбільшу прогресію(за сумою чисел).");
+                    Console.WriteLine("4.Задати кількість членів усім прогресіям з колекції.");
+                    Console.WriteLine("5.Створити колекцію зі знаменників геометричної прогресії.");
+                    Console.WriteLine("6.Порівняти дві прогресії з колекції за сумою всіх їхніх членів.");//override operator >/<
+                    Console.WriteLine("7.Посортувати та надрукувати прогресії  за кількістю  їхніх членів."); //IComparer
+                    Console.WriteLine("8.Посортувати та надрукувати прогресії за величиною їхнього інкременту.");//IComparer
+                    Console.WriteLine("9.Форматований вивід.");//IFormattable
+                    Console.WriteLine("10.Вийти.");
 
                     string menu = Console.ReadLine();
 
@@ -158,8 +156,6 @@ namespace classProgressionInheritance
                             string[] choices = Console.ReadLine().Split(" ");
                             Console.WriteLine(String.Format("Прогресія з індексом {0} більша за прогресію {1} : {2}", choices[0], choices[1], collection[int.Parse(choices[0])-1] > collection[int.Parse(choices[1])-1] ));
                             break;
-                       
-                     
                         case "7":
                             ProgressionComparingbyN sortN = new ProgressionComparingbyN();
                             collection.Sort(sortN);
@@ -181,7 +177,7 @@ namespace classProgressionInheritance
                         case "9":
                             Console.WriteLine("Введіть індекс прогресії, яку бажаєте надрукувати у форматі");
                             int index = int.Parse(Console.ReadLine());
-                            Console.WriteLine("ROW format : {0,30:ROW}", collection[index - 1]);
+                            Console.WriteLine("BYM1 format : {0,30:BYM1}", collection[index - 1]);
                             break;
                         case "10":
                         default:

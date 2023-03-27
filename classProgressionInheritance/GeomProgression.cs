@@ -8,7 +8,14 @@ namespace classProgressionInheritance
 {
     public class GeomProgression : Progression
     {
-        public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n) { }
+        public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
+        {
+            if(_increment == 1)
+            {
+                increment = 2;
+                Console.WriteLine("Wrong input of increment in this progression,increment by default will be '2' ");
+            }
+        }
 
         public override double Inc
         {
