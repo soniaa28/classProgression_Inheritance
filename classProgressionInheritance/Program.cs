@@ -98,7 +98,7 @@ namespace classProgressionInheritance
             ArithmeticProgression a1 = new ArithmeticProgression(1, 2, 5);
             ArithmeticProgression a2 = new ArithmeticProgression(0, 3, 7);
             ArithmeticProgression a3 = new ArithmeticProgression(1, 5, 3);
-
+           
             //Console.WriteLine(String.Format("отримана прогресія : {0}", a1 + a2)); //testing operator +
 
             GeomProgression g1 = new GeomProgression(1, 3, 5);

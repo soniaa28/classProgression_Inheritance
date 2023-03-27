@@ -6,10 +6,11 @@ using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace classProgressionInheritance
 {
-    abstract public class Progression : IFormattable
+    abstract public class Progression : IFormattable, ICloneable
     {
         protected double m1; // перший член прогресії
         protected double increment;// d або q 
@@ -35,7 +36,7 @@ namespace classProgressionInheritance
             else { increment = _increment; }
             this.n = _n;
         }
-
+       
         public abstract double getN(int _n); //знаходження n-тового члена прогресії
         public abstract double getSumOfN(int _n);//знаходження суми усіх n-членів 
         public abstract double getSumOfAll();//знаходження суми всіх елементів прогресії
@@ -72,6 +73,12 @@ namespace classProgressionInheritance
                     return ToString();
             }
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone(); //поверхневе копіюванння
+        }
+
         public static bool operator <(Progression left, Progression right)
         {
             return left.getSumOfAll() < right.getSumOfAll();
