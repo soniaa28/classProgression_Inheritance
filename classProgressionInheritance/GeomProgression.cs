@@ -10,7 +10,18 @@ namespace classProgressionInheritance
 
 
     {
-       
+        public delegate void ProgressionEventHandler(object sender, EventArgs e);
+
+        public event ProgressionEventHandler ProgressionEvent;
+        public void OnProgressionEvent()
+        {
+            ProgressionEvent?.Invoke(this, EventArgs.Empty);
+        }
+        public void Pevent() //method for сalling the event Lesson
+        {
+           OnProgressionEvent();
+        }
+
         public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
         {
             if(_increment == 1 || increment == -1)
@@ -34,8 +45,14 @@ namespace classProgressionInheritance
                     increment = 2; 
                 }
                 else { increment = value; }
-                OnEvent();
+             
             }
+        }
+
+        public override int N
+        {
+            get { return n; }
+            set { n = value; OnProgressionEvent(); }
         }
         public override double getN(int _n)
         {
@@ -61,21 +78,11 @@ namespace classProgressionInheritance
             return new GeomProgression(newFirstMember, newIncrement, newN);
         }
 
-        public delegate void ProgressionEventHandler(object sender, EventArgs e);
-        public event ProgressionEventHandler Event;
-        public void OnEvent()
-        {
-            Event?.Invoke(this, EventArgs.Empty);
-        }
-        public class AmountEventArgument : EventArgs
-        {
-            public int Param { get; set; }
-            public string Msg { get; set; }
-            public AmountEventArgument(int x)
-            {
-                Param = x;
-            }
-        }
+    
+        
+     
+
     }
+   
 }
 

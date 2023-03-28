@@ -18,17 +18,8 @@ namespace classProgressionInheritance
 
         public abstract double Inc { get; set; }
     
-        public int N
-        {
-            get 
-            { 
-                return n;
-            }
-            set 
-            {
-                n = value;
-            }
-        }
+        public abstract int N { get; set; }
+
         public Progression(double _m1, double _increment, int _n)
         {
             this.m1 = _m1;

@@ -188,7 +188,18 @@ namespace classProgressionInheritance
                 }
             }
 
-            Menu();
+            //Menu();
+
+             
+
+            GeomProgression gProgresion = new GeomProgression(1, 4, 2);
+            GlobalProgression globalProgression = new GlobalProgression(1,1,100);
+
+
+
+            gProgresion.ProgressionEvent += globalProgression.HandleEvent;
+            gProgresion.N = 3;
+
         }
     }
 }
