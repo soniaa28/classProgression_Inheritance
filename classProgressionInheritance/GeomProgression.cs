@@ -10,7 +10,7 @@ namespace classProgressionInheritance
     {
         public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
         {
-            if(_increment == 1)
+            if(_increment == 1 || increment == -1)
             {
                 increment = 2;
                 Console.WriteLine("Wrong input of increment in this progression,increment by default will be '2' ");
@@ -25,7 +25,7 @@ namespace classProgressionInheritance
             }
             set
             {
-                if (value == 0 || value == 1) 
+                if (value == 0 || value == 1 || value ==-1) 
                 {
                     Console.WriteLine("Wrong input of increment in this progression,increment by default will be '2' ");
                     increment = 2; 
