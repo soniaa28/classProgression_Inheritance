@@ -28,6 +28,8 @@ namespace classProgressionInheritance
             }
         }
 
+        public override int N { get ; set; }
+
         public override double getN(int _n)
         {
             return m1 + ((_n - 1) * increment);
