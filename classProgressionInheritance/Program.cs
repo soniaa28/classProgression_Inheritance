@@ -192,13 +192,15 @@ namespace classProgressionInheritance
 
              
 
-            GeomProgression gProgresion = new GeomProgression(1, 4, 2);
+            GeomProgression gProgresion = new GeomProgression(1, 2, 5);
             GlobalProgression globalProgression = new GlobalProgression(1,1,100);
 
 
 
             gProgresion.ProgressionEvent += globalProgression.HandleEvent;
-            gProgresion.N = 3;
+            Console.WriteLine(gProgresion);
+            gProgresion.Inc = 6;
+            Console.WriteLine(gProgresion);
 
         }
     }
