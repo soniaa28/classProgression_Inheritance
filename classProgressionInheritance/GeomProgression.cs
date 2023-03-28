@@ -24,14 +24,14 @@ namespace classProgressionInheritance
         public event ProgressionEventHandler ProgressionEvent;
         public void OnProgressionEvent(double x)
         {
-           Console.WriteLine("Мені змінили знаменник !");
+            Console.WriteLine($"Прогресія повідомляє : Мені змінили знаменник , тепер він = {x} !"); ; ;
            if(ProgressionEvent != null)
             {
                 ProgressionEventArgument arg = new(x);
                 ProgressionEvent(this, arg);
                 if(arg.Msg != String.Empty)
                 {
-                    Console.WriteLine($"Через те, що в мене змінився інкремент отримую : \"{arg.Msg}\" ");
+                    Console.WriteLine($"Прогресія повідомляє : Через те, що в мене змінився інкремент отримую : \"{arg.Msg}\" ");
                 }
             }
         }

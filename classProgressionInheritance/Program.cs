@@ -128,7 +128,7 @@ namespace classProgressionInheritance
                     Console.WriteLine("7.Посортувати та надрукувати прогресії  за кількістю  їхніх членів."); //IComparer
                     Console.WriteLine("8.Посортувати та надрукувати прогресії за величиною їхнього інкременту.");//IComparer
                     Console.WriteLine("9.Форматований вивід.");//IFormattable
-                    Console.WriteLine("10.Вийти.");
+                    Console.WriteLine("10.Вийти.Та перейти до завдання №4");
 
                     string menu = Console.ReadLine();
 
@@ -188,19 +188,19 @@ namespace classProgressionInheritance
                 }
             }
 
-            //Menu();
+            Menu();
 
              
 
-            GeomProgression gProgresion = new GeomProgression(1, 2, 5);
+            GeomProgression gProgresion = new GeomProgression(1, 2, 10);
             GlobalProgression globalProgression = new GlobalProgression(1,1,100);
 
-
+            Console.WriteLine("Task 4 \n");
 
             gProgresion.ProgressionEvent += globalProgression.HandleEvent;
-            Console.WriteLine(gProgresion);
+            Console.WriteLine("Прогресія до перетворень : " + gProgresion);
             gProgresion.Inc = 6;
-            Console.WriteLine(gProgresion);
+            Console.WriteLine("Прогресія після перетворень : " + gProgresion);
 
         }
     }
