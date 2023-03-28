@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace classProgressionInheritance
 {
     public class GeomProgression : Progression
+
+
     {
+       
         public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
         {
             if(_increment == 1 || increment == -1)
@@ -16,7 +19,7 @@ namespace classProgressionInheritance
                 Console.WriteLine("Wrong input of increment in this progression,increment by default will be '2' ");
             }
         }
-
+     
         public override double Inc
         {
             get
@@ -31,6 +34,7 @@ namespace classProgressionInheritance
                     increment = 2; 
                 }
                 else { increment = value; }
+                OnEvent();
             }
         }
         public override double getN(int _n)
@@ -55,6 +59,22 @@ namespace classProgressionInheritance
             double newIncrement = left.increment * right.increment;
             int newN = left.n + right.n;
             return new GeomProgression(newFirstMember, newIncrement, newN);
+        }
+
+        public delegate void ProgressionEventHandler(object sender, EventArgs e);
+        public event ProgressionEventHandler Event;
+        public void OnEvent()
+        {
+            Event?.Invoke(this, EventArgs.Empty);
+        }
+        public class AmountEventArgument : EventArgs
+        {
+            public int Param { get; set; }
+            public string Msg { get; set; }
+            public AmountEventArgument(int x)
+            {
+                Param = x;
+            }
         }
     }
 }
