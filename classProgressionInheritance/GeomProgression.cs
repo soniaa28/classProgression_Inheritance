@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 
 namespace classProgressionInheritance
 {
+    public class ProgressionEventArgument : EventArgs
+    {
+        public double Param { get; set; }
+        public string Msg { get; set; }
+        public ProgressionEventArgument(double x)
+        {
+            Param = x;
+        }
+    }
     public class GeomProgression : Progression
 
 
     {
-        public delegate void ProgressionEventHandler(object sender, EventArgs e);
+        public delegate void ProgressionEventHandler(object sender, ProgressionEventArgument arg);
 
         public event ProgressionEventHandler ProgressionEvent;
-        public void OnProgressionEvent()
+        public void OnProgressionEvent(double x)
         {
-            ProgressionEvent?.Invoke(this, EventArgs.Empty);
+           Console.WriteLine("Мені змінили знаменник !");
+           if(ProgressionEvent != null)
+            {
+                ProgressionEventArgument arg = new(x);
+                ProgressionEvent(this, arg);
+                if(arg.Msg != String.Empty)
+                {
+                    Console.WriteLine($"Через те, що в мене змінився інкремент отримую : \"{arg.Msg}\" ");
+                }
+            }
         }
-        public void Pevent() //method for сalling the event Lesson
-        {
-           OnProgressionEvent();
-        }
-
+       
         public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
         {
             if(_increment == 1 || increment == -1)
@@ -45,14 +59,14 @@ namespace classProgressionInheritance
                     increment = 2; 
                 }
                 else { increment = value; }
-             
+                OnProgressionEvent(value);
             }
         }
 
         public override int N
         {
             get { return n; }
-            set { n = value; OnProgressionEvent(); }
+            set { n = value;  }
         }
         public override double getN(int _n)
         {
