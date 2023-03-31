@@ -95,4 +95,15 @@ namespace classProgressionInheritance
             return a.Inc.CompareTo(b.Inc);
         }
     }
+
+    
+}
+public class ProgressionEventArgument : EventArgs // допомыжний клас для опрацювання подій
+{
+    public double Param { get; set; }
+    public string Msg { get; set; }
+    public ProgressionEventArgument(double x)
+    {
+        Param = x;
+    }
 }

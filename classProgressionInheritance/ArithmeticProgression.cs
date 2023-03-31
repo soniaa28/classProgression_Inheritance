@@ -9,6 +9,26 @@ namespace classProgressionInheritance
 {
     public class ArithmeticProgression : Progression
     {
+        public delegate void SumEventHandler(object sender, ProgressionEventArgument arg);
+
+        // подія - тоді коли сума елементів більше 200 
+        public event SumEventHandler SumEvent;
+    
+
+        // диспетчер події
+        private void OnSumEvent(double x)
+        {
+            Console.WriteLine($"Прогресія повідомляє :Сума моїх елементів вже аж {x} !"); ; ;
+            if (SumEvent != null)
+            {
+                ProgressionEventArgument arg = new(x);
+                SumEvent(this, arg);
+                if (arg.Msg != String.Empty)
+                {
+                    Console.WriteLine($"Прогресія повідомляє : Через те, що в мене велика сума елементів отримую повідомлення : \"{arg.Msg}\" ");
+                }
+            }
+        }
         public ArithmeticProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n) { }
 
         public override double Inc
@@ -38,6 +58,8 @@ namespace classProgressionInheritance
         public override double getSumOfAll()
         {
             double sum = 0.5 * increment * n * n + (m1 - 0.5 * increment) * n;
+            if(sum >200) OnSumEvent(sum);
+
             return sum;
         }
 
