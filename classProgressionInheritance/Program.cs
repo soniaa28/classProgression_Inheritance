@@ -192,15 +192,22 @@ namespace classProgressionInheritance
 
              
 
-            GeomProgression gProgresion = new GeomProgression(1, 2, 10);
+            GeomProgression gProgression = new GeomProgression(1, 2, 10);
             GlobalProgression globalProgression = new GlobalProgression(1,1,100);
 
             Console.WriteLine("Task 4 \n");
 
-            gProgresion.ProgressionEvent += globalProgression.HandleEvent;
-            Console.WriteLine("Прогресія до перетворень : " + gProgresion);
-            gProgresion.Inc = 6;
-            Console.WriteLine("Прогресія після перетворень : " + gProgresion);
+            gProgression.ProgressionEvent += globalProgression.HandleEvent;
+            Console.WriteLine("Прогресія до перетворень : " + gProgression);
+            gProgression.Inc = 6;
+            Console.WriteLine("Прогресія після перетворень : " + gProgression);
+
+            Console.WriteLine(" \n");
+            ArithmeticProgression aProgression = new ArithmeticProgression(1, 5, 10);
+            Console.WriteLine("Прогресія до перетворень : " + aProgression);
+            aProgression.SumEvent += globalProgression.HandleSumEvent;
+            Console.WriteLine(aProgression.getSumOfAll());
+            Console.WriteLine("Прогресія після перетворень : " + aProgression);
 
         }
     }

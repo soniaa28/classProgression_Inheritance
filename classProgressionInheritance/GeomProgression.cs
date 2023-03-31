@@ -6,22 +6,17 @@ using System.Threading.Tasks;
 
 namespace classProgressionInheritance
 {
-    public class ProgressionEventArgument : EventArgs
-    {
-        public double Param { get; set; }
-        public string Msg { get; set; }
-        public ProgressionEventArgument(double x)
-        {
-            Param = x;
-        }
-    }
+   
     public class GeomProgression : Progression
 
 
     {
-        public delegate void ProgressionEventHandler(object sender, ProgressionEventArgument arg);
+        public delegate void ProgressionEventHandler(object sender, ProgressionEventArgument arg); // оголошуємо тип делегата
 
-        public event ProgressionEventHandler ProgressionEvent;
+        public event ProgressionEventHandler ProgressionEvent; //подія буде виконуватись при зміні інкременту ззовні (через проперті)
+
+
+        // диспетчер події
         public void OnProgressionEvent(double x)
         {
             Console.WriteLine($"Прогресія повідомляє : Мені змінили знаменник , тепер він = {x} !"); ; ;
@@ -36,16 +31,16 @@ namespace classProgressionInheritance
             }
         }
        
-        public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n)
+        public GeomProgression(double _m1, double _increment, int _n) : base(_m1, _increment, _n) //конструктор
         {
-            if(_increment == 1 || increment == -1)
+            if(_increment == 1 || increment == -1) //перевірка 
             {
                 increment = 2;
                 Console.WriteLine("Wrong input of increment in this progression,increment by default will be '2' ");
             }
         }
-     
-        public override double Inc
+        //property
+        public override double Inc 
         {
             get
             {

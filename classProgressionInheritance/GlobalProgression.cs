@@ -12,6 +12,8 @@ namespace classProgressionInheritance
     {
         public GlobalProgression(double _m1, double _increment, int _n) : base(_m1 =1 , _increment =1 , _n =100)
         {}
+
+        //оголошення 2 методів для опрацювання подій прогресій
         public void HandleEvent(object sender, ProgressionEventArgument arg)
         {
             GeomProgression gp = sender as GeomProgression;
@@ -33,9 +35,16 @@ namespace classProgressionInheritance
                 }
                
             }
-            
            
-            
+
+            }
+
+        public void HandleSumEvent(object sender, ProgressionEventArgument arg)
+        {
+            ArithmeticProgression ap = sender as ArithmeticProgression;
+            ap.Inc /= 2.0;
+            arg.Msg = $"Змінюю тобі інкремент, тепер він = {ap.Inc}";
+
         }
     }
 }
